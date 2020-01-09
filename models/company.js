@@ -16,7 +16,7 @@ module.exports = class Company {
         return db.execute('INSERT INTO in_2019 (name, ceo, sector, industry, headquaters, website, employees, revenue) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [this.name, this.CEO, this.sector, this.industry, this.headquaters, this.website, this.employees, this.revenue])
     }
 
-    static fetchAll() {
-        return db.execute('SELECT * FROM in_2019')
+    static fetchAll(cb) {
+        return db.query('SELECT * FROM in_2019', cb)
     }
 }

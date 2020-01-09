@@ -26,6 +26,8 @@ app.use(morgan('combined', {
     stream: accessLogStream
 }))
 
+
+
 app.use(userRoutes)
 
 app.listen(process.env.PORT || 8080)
