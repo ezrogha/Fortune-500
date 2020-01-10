@@ -5,7 +5,8 @@ exports.post_500 = (req, res, next) => {
 
     const newCompany = new Company(name, ceo, sector, industry, hq, website, employees, revenue)
     newCompany.save((err, resp) => {
-        console.log(err)
+        console.log('POST ERROR-----', err)
+        console.log('POST POST-----', err)
         res.status(201).json({
             message: "Company added"
         })
@@ -14,7 +15,8 @@ exports.post_500 = (req, res, next) => {
 
 exports.get_500 = async (req, res, next) => {
     await Company.fetchAll((err, data) => {
-        console.log(data)
+        console.log('GET DATA-----', data)
+        console.log('GET ERROR-----', data)
         res.status(200).json(data.rows)
     })
 }
