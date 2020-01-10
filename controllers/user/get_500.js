@@ -2,7 +2,8 @@ const Company = require('../../models/company')
 
 exports.post_500 = (req, res, next) => {
     console.log('POSTING..........')
-    console.log('REQ-------', JSON.stringify(req))
+    console.log('REQ-------')
+    console.log(req)
     const { name, ceo, sector, industry, hq, website, employees, revenue } = req.body
 
     const newCompany = new Company(name, ceo, sector, industry, hq, website, employees, revenue)
