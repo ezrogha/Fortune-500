@@ -1,27 +1,27 @@
 const db = require('../utils/database');
+const { CreateTableIfExists, insertRow, selectAllTable } = require('../utils/queries')
 
 module.exports = class Company {
-    constructor(name, CEO, sector, industry, headquaters, website, employees, revenue) {
+    constructor({ name, ceo, sector, industry, hq, website, employees, revenue}, year) {
         this.name = name
-        this.CEO = CEO
+        this.ceo = ceo
         this.sector = sector
         this.industry = industry
-        this.headquaters = headquaters
+        this.headquaters = hq
         this.website = website
         this.employees = employees
         this.revenue = revenue
+        this.year = year
     }
 
-    save(cb) {
-        db.query('CREATE TABLE IF NOT EXISTS in_2019 (id serial PRIMARY KEY, ceo VARCHAR (100) NOT NULL, sector VARCHAR (100) NOT NULL, industry VARCHAR (100) NOT NULL, hq VARCHAR (100) NOT NULL, website VARCHAR (100) NOT NULL, employees integer NOT NULL, revenue integer NOT NULL)', (err, data) => {
-            console.log('SAVE ERROR-----', err)
-            console.log('SAVE DATA-----', data)
-        })
-        
-        return db.query('INSERT INTO in_2019 (name, ceo, sector, industry, hq, website, employees, revenue) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [this.name, this.CEO, this.sector, this.industry, this.headquaters, this.website, this.employees, this.revenue], cb)
+    save(cb, year) {
+        const insertData = [this.name, this.ceo, this.sector, this.industry, this.headquaters, this.website, this.employees, this.revenue]
+
+        db.query(CreateTableIfExists(year), () => {})
+        return db.query(insertRow(year), insertData, cb)
     }
 
-    static fetchAll(cb) {
-        return db.query('SELECT * FROM inn_2019', cb)
+    static fetchAll(cb, year) {
+        return db.query(selectAllTable(year), cb)
     }
 }
