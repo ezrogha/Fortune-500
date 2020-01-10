@@ -17,7 +17,7 @@ exports.get_500 = async (req, res, next) => {
     await Company.fetchAll((err, data) => {
         console.log('GET DATA-----', data)
         console.log('GET ERROR-----', data)
-        if(data.rows){
+        if(data){
             res.status(200).json(data.rows)
         } else {
             res.status(200).json([])
