@@ -1,6 +1,6 @@
 RESTful API for the Fortune 500 companies
 
-### Endpoints and Functionality:
+**Endpoints and Functionality:**
 
 | Endpoint                                      | Functionality                                       |
 | ---------                                     |---------------                                      |
@@ -14,13 +14,13 @@ RESTful API for the Fortune 500 companies
 [{
     "id": "<company Id>",
     "name": "<company Name>",
-    "ceo": <compnay CEO>,
-    "sector": <sector>,
-    "industry": <Industry type>,
-    "hq": <company Headquaters>,
-    "website": <company Website>,
-    "employees": <number of employees>,
-    "revenue": revenue
+    "ceo": "<compnay CEO>",
+    "sector": "<sector>",
+    "industry": "<Industry type>",
+    "hq": "<company Headquaters>",
+    "website": "<company Website>",
+    "employees": "<number of employees>",
+    "revenue": "<revenue>"
 }]
 ```
 
